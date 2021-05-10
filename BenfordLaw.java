@@ -10,7 +10,7 @@
 
 import java.util.Scanner;
 import java.io.File;
-import java.io.FileNotFoundException; 
+import java.io.FileNotFoundException; // where the [redacted] am i
 
 class BenfordLaw {
 	public static void main(String [] args) throws FileNotFoundException {
