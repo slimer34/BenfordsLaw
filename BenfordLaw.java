@@ -1,6 +1,6 @@
 /*
- * Date: 2021/05/10
- * Name: Daniel Yuan
+ * Date: 2021/11/10
+ * Name: Daniel Yuan and Nikhil Sachdev
  * Teacher: Mr. Ho
  * Description: Use Benford's Law to analyze a sales data file 
  * 1. Read the sales.csv file
@@ -10,7 +10,7 @@
 
 import java.util.Scanner;
 import java.io.File;
-import java.io.FileNotFoundException; // where the [redacted] am i
+import java.io.FileNotFoundException;
 
 class BenfordLaw {
 	public static void main(String [] args) throws FileNotFoundException {
@@ -23,6 +23,11 @@ class BenfordLaw {
 		
 		reader.close();
 	}
+	
+	public static void BenfordVerification(String salesNumbers) {
+			
+	}
+	
 	
 	public static void generateSalesData(String salesChart) {
 		File salesData = new File("results.csv");
