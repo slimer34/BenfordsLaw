@@ -24,7 +24,7 @@ class BenfordLaw {
 		reader.close();
 	}
 	
-	public static boolean BenfordVerification(String salesNumbers) { //dataReader method has important stuff (including salesNumbers?)
+	public static boolean benfordVerification(String salesNumbers) { //dataReader method has important stuff (including salesNumbers?)
 		int counter1 = 0
 		int precent = 0
 		for (int i = 0; i < salesNumbers.length; i++) {
