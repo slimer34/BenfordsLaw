@@ -24,8 +24,25 @@ class BenfordLaw {
 		reader.close();
 	}
 	
-	public static void BenfordVerification(String salesNumbers) {
-			
+	public static boolean BenfordVerification(String salesNumbers) { //dataReader method has important stuff (including salesNumbers?)
+		int counter1 = 0
+		int precent = 0
+		for (int i = 0; i < salesNumbers.length; i++) {
+			char saleNumbers1 = (saleNumbers[i]).charAt(0);
+			if (saleNumbers1.equals("1")) {
+				counter1++;
+			}
+			else {
+				continue;
+			}
+		}
+		precent = (counter1 / (salesNumbers.length)) * 100
+		if (precent >= 29 && precent <= 32) {
+			return true;
+		}	
+		else {
+			return false;
+		}
 	}
 	
 	
