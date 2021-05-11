@@ -1,6 +1,6 @@
 /*
- * Date: 2021/05/10
- * Name: Daniel Yuan
+ * Date: 2021/11/10
+ * Name: Daniel Yuan and Nikhil Sachdev
  * Teacher: Mr. Ho
  * Description: Use Benford's Law to analyze a sales data file 
  * 1. Read the sales.csv file
