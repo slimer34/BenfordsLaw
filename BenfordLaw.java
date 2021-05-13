@@ -15,10 +15,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-// TODO: make the percentage an Array with the percentages of 1-9 occuring in the data
-// TODO: write the file with percentages and tables
-
-
 class BenfordLaw {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws FileNotFoundException {
@@ -43,9 +39,11 @@ class BenfordLaw {
 			System.out.println("The program has been ended");
 		}
 		
+		
+		
 		if (benfordVerification(salesNumbers)) {
 			System.out.println("There is a possibility you did not commit fraud! Congratulations!");
-			generateSalesData();
+			generateSalesData(percentageCalculation(salesNumbers));
 		} else {
 			System.out.println(
 					"Stop! You violated the law! Pay the court a fine or serve your sentence! \n Your stolen goods are now forfeit.");
@@ -58,8 +56,6 @@ class BenfordLaw {
 		String line;
 		String currentSalesAmount;
 		int numLines = 0;
-		double[] frequencyArray = new double[9];
-		Arrays.fill(frequencyArray, 0);
 		String[] currentLineArray;
 		File salesFile = new File(fileName);
 
@@ -88,19 +84,33 @@ class BenfordLaw {
 			currentSalesAmount = currentLineArray[1];
 			salesNumberArray[count] = currentSalesAmount;
 		}
+		
+		reader.close();
+		System.out.println(Arrays.toString(salesNumberArray));
+		return salesNumberArray;
 
+	}
+	
+	public static double[] percentageCalculation(String[] salesNumberArray) {
+		double percent;
+		double[] dividePercentageArray = new double[9];
+		double[] frequencyArray = new double[9];
+		Arrays.fill(frequencyArray, 0);
+		
+		
 		for (String sale: salesNumberArray) {
 			char firstDigitChar = sale.charAt(0); // save the first character of the string
 			int firstDigit = Character.getNumericValue(firstDigitChar); // reconvert to integer
 			frequencyArray[firstDigit - 1]++;
-			
 		}
 		
-		reader.close();
-		System.out.println(Arrays.toString(salesNumberArray));
-		System.out.println(Arrays.toString(frequencyArray));
-		return salesNumberArray;
-
+		for(int i = 0; i < 9; i++){
+			percent = frequencyArray[i] / salesNumberArray.length;
+			dividePercentageArray[i] = percent*100;
+			
+		}
+		System.out.println(Arrays.toString(dividePercentageArray));
+		return dividePercentageArray;
 	}
 
 	public static boolean benfordVerification(String salesNumbers[]) {
@@ -122,10 +132,17 @@ class BenfordLaw {
 		}
 	}
 
-	public static void generateSalesData() {
+	public static void generateSalesData(double[] percentageArray) {
 		try{
 			File salesData = new File("results.csv");
 			FileWriter write = new FileWriter("results.csv");
+			write.write("Number,Percent\n");
+		
+			
+			for (int i = 1; i <= 9; i++) {
+				write.write(String.format("%d, %.2f%%\n", i, percentageArray[i - 1]));
+			}
+			write.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
