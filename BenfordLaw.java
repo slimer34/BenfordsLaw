@@ -86,7 +86,6 @@ class BenfordLaw {
 		}
 		
 		reader.close();
-		System.out.println(Arrays.toString(salesNumberArray));
 		return salesNumberArray;
 
 	}
@@ -109,7 +108,6 @@ class BenfordLaw {
 			dividePercentageArray[i] = percent*100;
 			
 		}
-		System.out.println(Arrays.toString(dividePercentageArray));
 		return dividePercentageArray;
 	}
 
